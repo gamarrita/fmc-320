@@ -11,13 +11,19 @@
 #include "fmc_debug.h"
 #include "fmc_generator.h"
 
-// Con SIMUL_AFTER_FLASH_TRUE se simulan pulsos de entrada al front-end
-// luego de cada reset.
-// Con SIMUL_AFTER_FLASH_FALSE la simulacion esta desactivada.
-// 
+// Este caudalimetro tiene un generador de pulsos internos que se podria activar en culaquier momento
+// Convenientemente durante el desarrollo y posereor debuger se dejan los siguientes #definesc que
+// controlaran la simulacion de pulsos luego de cada reset, la acciones de los siguientes defines son:
+//
+// - #define SIMUL_AFTER_FLASH_TRUE -> habilita o desabilita la generacion del pulsos luego de cada reset,
+//   termina en _TRUE si queremos simular pulsos, terminado _FALSE, o cualquier otra cosa queda deshabilitado.
+//
+// - #SIMUL_AFTER_FLASH_FREQ -> un entero de 1 a 2000 para representar la frecuencia en Hz
+//
+// - #SIMUL_AFTER_FLASH_PULSES -> un entero de 1 a 2000 millones para la cantidad de pulsos, o GENERATOR_CYCLES_PERPETUAL para infinitos
 #define SIMUL_AFTER_FLASH_TRUE 
 #define SIMUL_AFTER_FLASH_FREQ  10 
-#define SIMUL_AFTER_FLASH_PULSES  100 // GENERATOR_CYCLES_PERPETUAL // Un entero o GENERATOR_CYCLES_PERPETUAL par asiempre
+#define SIMUL_AFTER_FLASH_PULSES  50 // GENERATOR_CYCLES_PERPETUAL // Un entero o GENERATOR_CYCLES_PERPETUAL par asiempre
 
 fmc_data totalizer;
 
