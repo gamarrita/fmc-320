@@ -36,7 +36,7 @@ static void IRAM_ATTR inputPulse_isr_handle()
 
 void app_main(void)
 {
-    int boot_counter = 1;
+    int boot_counter = 3;
 
     gpio_pad_select_gpio(BOARD_INPUT_PULSE);
     gpio_set_direction(BOARD_INPUT_PULSE, GPIO_MODE_INPUT);
