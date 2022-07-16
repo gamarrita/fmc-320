@@ -32,11 +32,11 @@ static void IRAM_ATTR inputPulse_isr_handle()
     {
         micros_end = esp_timer_get_time();
     }
-    
 }
 
 void app_main(void)
 {
+    int boot_counter = 1;
 
     gpio_pad_select_gpio(BOARD_INPUT_PULSE);
     gpio_set_direction(BOARD_INPUT_PULSE, GPIO_MODE_INPUT);
@@ -46,16 +46,14 @@ void app_main(void)
     gpio_install_isr_service(0);
     gpio_isr_handler_add(BOARD_INPUT_PULSE, inputPulse_isr_handle, (void *)BOARD_INPUT_PULSE);
    
-   micros_end  = micros_start;
     while(true)
     {
-          
-          
-
          while(micros_start == micros_end)
          {
             vTaskDelay(100 / portTICK_PERIOD_MS);
          }
-         printf("Teimpor entre pulsos =  %lld miLI-segundos\n", (micros_end - micros_start)/1000);
+         printf("Tiempo de booteo %d =  %lld mili-segundos\n", boot_counter, (micros_end - micros_start)/1000);
+         micros_end  = micros_start;
+         boot_counter++;
     }
 }
