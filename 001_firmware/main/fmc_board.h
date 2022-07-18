@@ -28,6 +28,14 @@ enum GPIO_INPUT
     BOARD_INPUT_PULSE  = 41,
 };
 
+enum GPIO_I2C
+{
+    BOARD_I2C_0_SDA = 35,
+    BOARD_I2C_0_SCL = 36,
+    BOARD_I2C_0_ADDRESS = 0x27,
+};
+
+
 typedef struct
 {
     uint32_t factor_calib;

@@ -3,8 +3,6 @@ Mejoras regitradas en
 https://stackoverflow.com/questions/72974115/esp32-s3-booting-time/73006528#73006528
 */
 
-
-
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -12,9 +10,7 @@ https://stackoverflow.com/questions/72974115/esp32-s3-booting-time/73006528#7300
 #include "driver/gpio.h"
 #include "esp_log.h"
 
-
 #define BOARD_LED_ALIVE 2
-
 
 void app_main(void)
 {
